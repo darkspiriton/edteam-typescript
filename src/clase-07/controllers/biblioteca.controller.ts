@@ -1,30 +1,33 @@
-import { JsonController, Get, Param } from 'routing-controllers';
+import { JsonController, Get, Param, QueryParam, Res } from 'routing-controllers';
+import { Response } from 'express';
 import { Libro } from '../modelo/libro';
+import { RepositorioLibros } from './repositorio-libros';
 
 @JsonController()
 export class BibliotecaController {
 
-    LIBROS: Libro[] = [
-        {
-            id: 1,
-            titulo: 'Historia del Tiempo',
-            autor: 'Stephen Hawking'
-        }
-    ];
+    private repo: RepositorioLibros;
 
-    constructor() {}
+    constructor() {
+        this.repo = new RepositorioLibros();
+    }
 
     // GET /libros
     @Get('/libros')
     getLibros() {
-        return this.LIBROS;
+        return this.repo.getLibros();
     }
 
     // GET /libro/historia
-    @Get('/libro/:titulo')
-    getLibroPorTitulo(@Param('titulo') titulo: string) {
+    @Get('/libro')
+    getLibroPorTitulo(@QueryParam('titulo') titulo: string, @Res() response: Response) {
         // Biblioteca.buscarPorTitulo(titulo)
         console.log('Buscando: ', titulo);
-        return this.LIBROS[0];
+        const encontrado = this.repo.getByTitulo(titulo);
+        if(!encontrado) {
+            return response.sendStatus(404);
+        }
+
+        return encontrado;
     }
 }

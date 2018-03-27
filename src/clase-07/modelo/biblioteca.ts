@@ -13,7 +13,7 @@ export class Biblioteca {
 
     buscarLibro(titulo: string) {
         return this.libros.find(function(libro: Libro) {
-            return libro.titulo.indexOf(titulo) >= 0;
+            return libro.titulo.toLowerCase().indexOf(titulo.toLowerCase()) >= 0;
         })
     }
 }

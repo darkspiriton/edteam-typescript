@@ -4,6 +4,7 @@ import { createExpressServer } from 'routing-controllers';
 import { BibliotecaController } from './controllers/biblioteca.controller';
 
 const applicacion = createExpressServer({
+    cors: true,
     controllers: [BibliotecaController]
 });
 
