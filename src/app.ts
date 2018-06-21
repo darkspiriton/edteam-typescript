@@ -28,7 +28,7 @@ suma(1, 3);
 // type: string
 // Primera forma
 let nombre = 'Luis';
-let apellido:string = 'Aviles';
+let apellido: string = 'Aviles';
 
 // ES6. Template literals
 let nombreCompleto = `${nombre} ${apellido}`;
@@ -43,17 +43,24 @@ let nombreCompleto2: string = `
 console.log('Mi nombre es: ' + nombreCompleto2);
 
 // type: boolean
-let inscrito:boolean = true;
+let inscrito: boolean = true;
 inscrito = true;
-mensaje = inscrito? 'Bienvenido al curso': 'Suscribete! :-)';
+mensaje = inscrito ? 'Bienvenido al curso' : 'Suscribete! :-)';
 console.log(mensaje);
 
 // type: void
 
 function mostrarEstadoInscripcion(inscrito: boolean): void {
-    mensaje = inscrito? 'Bienvenido al curso': 'Suscribete! :-)';
+    mensaje = inscrito ? 'Bienvenido al curso' : 'Suscribete! :-)';
     console.log(mensaje);
 }
+
+const show = (inscrito:boolean):void => {
+    mensaje = inscrito ? 'Bienvenido al curso show' : 'Suscribete! :-) show';
+    console.log(mensaje);
+}
+
+show(false)
 
 let resultado = mostrarEstadoInscripcion(inscrito);
 console.log('resultado', resultado);
@@ -67,7 +74,7 @@ let nulo: null;
 nulo = null;
 
 // type: any
-let nombreCurso:any = "TypeScript";
+let nombreCurso: any = "TypeScript";
 nombreCurso = 10;
 nombreCurso = true;
 nombreCurso = null;
@@ -75,7 +82,7 @@ nombreCurso = null;
 // usando tipos en funciones
 
 function saludo(nombre?: string): string {
-    if(!nombre) {
+    if (!nombre) {
         nombre = 'Luis';
     }
     return 'Hola ' + nombre;
@@ -85,9 +92,9 @@ console.log(saludo('Roberto'));
 console.log(saludo());
 
 function sumaMultiple(a: number, b: number, c?: number, d?: number): number {
-    if(!c)
+    if (!c)
         c = 0;
-    if(!d)
+    if (!d)
         d = 0;
     return a + b + c + d;
 }
@@ -112,10 +119,13 @@ arreglo.push(1);
 arreglo.push(2);
 
 let arreglo2: number[];
-arreglo = [1, 2, 3];
+arreglo2 = [1, 2, 3];
+
+console.log(arreglo2)
 
 let arreglo3: Array<number>;
-
+arreglo3 = [1]
+console.log(arreglo3)
 
 
 

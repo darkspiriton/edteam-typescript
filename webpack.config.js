@@ -1,7 +1,8 @@
 module.exports = {
     mode: "development",
     devtool: "inline-source-map",
-    entry: "./src/clase-06/app.ts",
+    // entry: "./src/clase-06/app.ts",
+    entry: "./src/app.ts",
     output: {
       filename: 'app.js',
       path: __dirname + './dist'
